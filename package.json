@@ -1,0 +1,23 @@
+{
+  "name": "bysykkel",
+  "version": "1.0.0",
+  "description": "A simple application for displaying the status of all city bikes in Oslo. It displays the name, the available bikes and the number of free return docks in a table layout in the console.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "keywords": [
+    "bysykkel"
+  ],
+  "author": "Morten Olsrud",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hakash/bysykkel.git"
+  }
+}
