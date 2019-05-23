@@ -43,8 +43,6 @@ class StationDataFetcher {
 			const response = await request(opts);
 			const statusRaw = response.data.stations;
 	
-			stations.count.bikes = 0;
-			stations.count.docks = 0;
 			statusRaw.forEach(stationStatus => {
 				const id = stationStatus.station_id;
 
