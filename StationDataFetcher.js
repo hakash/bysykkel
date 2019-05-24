@@ -27,7 +27,6 @@ class StationDataFetcher {
 			return stations;
 		} 
 		catch (err) {
-			console.log(err);
 			return {};
 		}
 	}
@@ -48,14 +47,12 @@ class StationDataFetcher {
 
 				if(id && stations[id]){
 					stations[id].loadStatus(stationStatus);
-					//console.log(stations[id]);
 				}
 			});
 
 			return true;
 		} 
 		catch (err) {
-			console.log(err);
 			return false;
 		}
 	}
