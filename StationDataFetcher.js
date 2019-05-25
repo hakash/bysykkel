@@ -8,7 +8,7 @@ class StationDataFetcher {
 
 	async getStations(){
 		const opts = {
-			uri: this.options.uris.information,
+			uri: this.options.uris.station_information,
 			json: this.options.json,
 			headers: this.options.headers
 		}
@@ -33,7 +33,7 @@ class StationDataFetcher {
 
 	async getStatus(stations){
 		const opts = {
-			uri: this.options.uris.status,
+			uri: this.options.uris.station_status,
 			json: this.options.json,
 			headers: this.options.headers
 		}

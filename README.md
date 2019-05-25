@@ -25,8 +25,30 @@ npm start
 
 ## Andre muligheter
 
-Filene `Stations.js` og `StationDataFetcher.js` er laget for å kunne importere i forskjellige typer systemer. Om du ønsker å bygge en web-visning, en CSV-export eller noe helt annet, så kan du bruke disse komponentene for å gjøre det.
+Filene `BikeshareFeed.js`, `Stations.js`, `StationDataFetcher.js` og `StationDataPrinter.js` er laget for å kunne importere i forskjellige typer systemer. Om du ønsker å bygge en web-visning, en CSV-export eller noe helt annet, så kan du bruke disse komponentene for å gjøre det.
 
-Så lenge API-et du kobler på støtter [GBFS](https://github.com/NABSA/gbfs) strukturerte data, så skal `StationDataFetcher` kunne hente data for deg.
+Så lenge API-et du kobler på støtter [GBFS](https://github.com/NABSA/gbfs) strukturerte data og presenterer en fil for autodiscover, så skal `BikeshareFeed` kunne hente data for deg.
+
+### Eksempel på å exportere CSV
+
+Dette eksempelet gjør en liten endring på eksempelfila som ligger ved i prosjektet, ved å skifte til skriving av CSV til fil, fremfor tabulert skriving til terminal. Forskjellene er import av `fs`-pakken, defineringen av et filnavn, samt bruken av `fs.writeFileSync`fremfor `console.log`.
+
+```javascript
+const BikeshareFeed = require("./BikeshareFeed");
+const fs = require("fs");
+
+const autodiscoverUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/gbfs.json";
+const fileName = "output.csv";
+
+const bf = new BikeshareFeed(autodiscoverUrl,"testcompany","testapp");
+
+bf.on("ready",(err) => {
+    if(err){
+        console.log(err);
+        return;
+    }
+    fs.writeFileSync(fileName, bf.csv());
+});
+```
 
 Lykke til!

@@ -1,33 +1,13 @@
-const StationDataFetcher = require("./StationDataFetcher");
-const StationDataPrinter = require("./StationDataPrinter");
+const BikeshareFeed = require("./BikeshareFeed");
 
-const stationListURL = "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json";
-const stationStatusURL = "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json";
+const autodiscoverUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/gbfs.json";
 
-const headers = {
-	"Client-Identifier": "testcompany-testapp",
-};
+const bf = new BikeshareFeed(autodiscoverUrl,"testcompany","testapp");
 
-const options = {
-	uris: {
-		information: stationListURL,
-		status: stationStatusURL
-	},
-	headers,
-	json: true,
-};
-
-const stationDataFetcher = new StationDataFetcher(options);
-const stationDataPrinter = new StationDataPrinter();
-
-async function run(){
-	const stations = await stationDataFetcher.getStations();
-	if( ! await stationDataFetcher.getStatus(stations) ){
-		console.log("Error getting status for stations.");
+bf.on("ready",(err) => {
+	if(err){
+		console.log(err);
 		return;
 	}
-	stationDataPrinter.printData(stations);
-}
-
-
-run();
+	bf.print();
+});
