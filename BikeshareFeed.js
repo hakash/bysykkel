@@ -25,7 +25,6 @@ class BikeshareFeed {
 		this.stationDataPrinter = new StationDataPrinter();
 		this.stationDataFetcher = null;
 
-		this.loadFeed();
 	}
 
 	on(event, handler){

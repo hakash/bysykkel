@@ -2,7 +2,7 @@ const BikeshareFeed = require("./BikeshareFeed");
 
 const autodiscoverUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/gbfs.json";
 
-const bf = new BikeshareFeed(autodiscoverUrl,"testcompany","testapp");
+const bf = new BikeshareFeed(autodiscoverUrl,"test company","test app");
 
 bf.on("ready",(err) => {
 	if(err){
@@ -11,3 +11,5 @@ bf.on("ready",(err) => {
 	}
 	bf.print();
 });
+
+bf.loadFeed();

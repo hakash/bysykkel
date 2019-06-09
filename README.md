@@ -49,6 +49,8 @@ bf.on("ready",(err) => {
     }
     fs.writeFileSync(fileName, bf.csv());
 });
+
+bf.loadFeed();
 ```
 
 Lykke til!
