@@ -96,7 +96,7 @@ class BikeshareFeed {
 		catch (err) {
 			console.log("There was an error loading the feeds from the autodiscover. Please ensure the file exists and contains the correct information.");
 			console.log(err);
-			return;
+			return err;
 		}
 
 	}
