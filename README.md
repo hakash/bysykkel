@@ -43,7 +43,7 @@ const fileName = "output.csv";
 const bf = new BikeshareFeed(autodiscoverUrl,"testcompany","testapp");
 
 bf.on("ready",(err) => {
-    if(err){
+    if(err) {
         console.log(err);
         return;
     }
@@ -51,6 +51,34 @@ bf.on("ready",(err) => {
 });
 
 bf.loadFeed();
+```
+
+### Eksempel på async/await
+
+BikeshareFeed støtter også async/await fremfor callbacks. Samme eksempel som over, men i moderne drakt.
+
+```javascript
+const BikeshareFeed = require("./BikeshareFeed");
+const fs = require("fs");
+
+const autodiscoverUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/gbfs.json";
+const fileName = "output.csv";
+
+async function run() {
+    const bf = new BikeshareFeed(autodiscoverUrl,"testcompany","testapp");
+
+    try {
+        await bf.lodFeed();
+        fs.writeFileSync(fileName, bf.csv());
+    }
+    catch(err) {
+        if(err) {
+            console.log(err);
+        }
+    }
+}
+
+run();
 ```
 
 Lykke til!
